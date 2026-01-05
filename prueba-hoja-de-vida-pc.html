@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha Técnica Equipos - Hospital Roldanillo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<form id="inventoryForm">
+<div class="container">
+    <!-- Encabezado  -->
+    <table class="header-table">
+        <tr>
+            <td rowspan="4" style="width: 20%;">
+                <img src="Logo_HDSA.jpg" alt="Logo Hospital" style="max-width: 100%; max-height: 80px; height: auto;">
+            </td>
+            <td rowspan="2" class="logo">HOSPITAL DEPARTAMENTAL SAN ANTONIO DE ROLDANILLO</td>
+            <td><strong>CÓDIGO:</strong> </td>
+        </tr>
+        <tr>
+            <td><strong>VERSIÓN:</strong> </td>
+        </tr>
+        <tr>
+            <td rowspan="2"><strong>GESTIÓN DE LA INFORMACIÓN - SEGURIDAD INFORMÁTICA</strong><br>FICHA TÉCNICA DE EQUIPOS DE CÓMPUTO</td>
+            <td><strong>PÁGINA:</strong> 1 de 1</td>
+        </tr>
+        <tr>
+            <td><strong>FECHA:</strong> <input type="date" name="fecha_reporte" style="width: 130px;"></td>
+        </tr>
+    </table>
+
+    <!-- 1. Usuario -->
+    <h2>1. INFORMACIÓN DEL USUARIO Y UBICACIÓN</h2>
+    <div class="section-grid cols-4">
+        <div class="field-box" style="grid-column: span 2;"><span class="field-label">Nombre Responsable:</span> <input type="text" name="responsable" required></div>
+        <div class="field-box"><span class="field-label">Cédula (CC):</span> <input type="text" name="cedula"></div>
+        <div class="field-box"><span class="field-label">Cargo:</span> <input type="text" name="cargo"></div>
+        <div class="field-box" style="grid-column: span 2;"><span class="field-label">Usuario de Red / Correo:</span> <input type="text" name="usuario_red"></div>
+        <div class="field-box" style="grid-column: span 2;"><span class="field-label">Ubicación:</span> <input type="text" name="ubicacion"></div>
+    </div>
+
+    <!-- 2. Hardware -->
+    <h2>2. HARDWARE Y ESPECIFICACIONES</h2>
+    <div class="section-grid cols-3">
+        <div class="field-box full-width">
+            <span class="field-label">Tipo de Equipo:</span>
+            <div class="check-group">
+                <div class="check-item"><input type="radio" name="tipo_equipo" value="PC Escritorio"> PC Escritorio</div>
+                <div class="check-item"><input type="radio" name="tipo_equipo" value="Portatil"> Portátil</div>
+                <div class="check-item"><input type="radio" name="tipo_equipo" value="AIO"> Todo en Uno (AIO)</div>
+                <div class="check-item"><input type="radio" name="tipo_equipo" value="Servidor"> Servidor</div>
+            </div>
+        </div>
+        <div class="field-box"><span class="field-label">Marca:</span> <input type="text" name="marca"></div>
+        <div class="field-box"><span class="field-label">Modelo:</span> <input type="text" name="modelo"></div>
+        <div class="field-box"><span class="field-label">Serial (S/N):</span> <input type="text" name="serial"></div>
+        <div class="field-box"><span class="field-label">Placa Inventario:</span> <input type="text" name="placa"></div>
+        <div class="field-box"><span class="field-label">Procesador:</span> <input type="text" name="procesador"></div>
+        <div class="field-box"><span class="field-label">Memoria RAM (GB):</span> <input type="text" name="ram"></div>
+        <div class="field-box full-width">
+            <span class="field-label">Almacenamiento:</span>
+            Disco 1: <select name="disco1_tipo" style="width: 60px; height: auto;"><option>HDD</option><option>SSD</option></select> | Capacidad: <select name="disco1_cap" style="width: 80px; height: auto;"><option>128 GB</option><option>256 GB</option><option>500 GB</option><option>1 TB</option><option>2 TB</option></select>
+        </div>
+    </div>
+
+    <!-- 3. Periféricos -->
+    <h2>3. DETALLE DE PERIFÉRICOS</h2>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Elemento</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Serial</th>
+                <th>Placa / Activo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Monitor</td><td><input type="text" name="mon_marca"></td><td><input type="text" name="mon_modelo"></td><td><input type="text" name="mon_serial"></td><td><input type="text" name="mon_placa"></td></tr>
+            <tr><td>Teclado</td><td><input type="text" name="tec_marca"></td><td><input type="text" name="tec_modelo"></td><td><input type="text" name="tec_serial"></td><td><input type="text" name="tec_placa"></td></tr>
+            <tr><td>Mouse</td><td><input type="text" name="mou_marca"></td><td><input type="text" name="mou_modelo"></td><td><input type="text" name="mou_serial"></td><td><input type="text" name="mou_placa"></td></tr>
+            <tr><td>Impresora/Scanner</td><td><input type="text" name="imp_marca"></td><td><input type="text" name="imp_modelo"></td><td><input type="text" name="imp_serial"></td><td><input type="text" name="imp_placa"></td></tr>
+            <tr><td>UPS/Regulador</td><td><input type="text" name="ups_marca"></td><td><input type="text" name="ups_modelo"></td><td><input type="text" name="ups_serial"></td><td><input type="text" name="ups_placa"></td></tr>
+        </tbody>
+    </table>
+
+    <!-- 4. Software -->
+    <h2>4. SOFTWARE Y LICENCIAMIENTO</h2>
+    <div class="section-grid">
+        <div class="field-box">
+            <span class="field-label">Sistema Operativo:</span>
+            <div class="check-item"><input type="radio" name="so" value="Win10"> Windows 10 Pro</div>
+            <div class="check-item"><input type="radio" name="so" value="Win11"> Windows 11 Pro</div>
+            <div class="check-item"><input type="radio" name="so" value="Linux"> Linux / Otro</div>
+            <div style="margin-top: 2px; border-top: 1px solid #eee; padding-top: 2px;">
+                <strong>Licencia:</strong> <input type="checkbox" name="lic_oem"> OEM <input type="checkbox" name="lic_vol"> Volumen
+            </div>
+        </div>
+        <div class="field-box">
+            <span class="field-label">Microsoft Office:</span>
+            <div class="check-group">
+                <div class="check-item"><input type="radio" name="office" value="365"> Office 365</div>
+                <div class="check-item"><input type="radio" name="office" value="2016"> Office 2016</div>
+                <div class="check-item"><input type="radio" name="office" value="2019"> Office 2019</div>
+                <div class="check-item"><input type="radio" name="office" value="2021"> Office 2021</div>
+                <div class="check-item"><input type="radio" name="office" value="2024"> Office 2024</div>
+                <div class="check-item"><input type="radio" name="office" value="LibreOffice"> LibreOffice</div>
+                <div class="check-item"><input type="radio" name="office" value="WPS"> WPS Office</div>
+            </div>
+            <div style="margin-top: 4px; border-top: 1px solid #eee; padding-top: 2px;">
+                <strong>Estado:</strong> <input type="radio" name="estado_off" value="Activado"> Activado <input type="radio" name="estado_off" value="SinLicencia"> Sin Licencia
+            </div>
+        </div>
+        <div class="field-box full-width">
+            <span class="field-label">Software Adicional Instalado:</span>
+            <div class="check-group">
+                <div class="check-item"><input type="checkbox" name="sw_7zip"> 7Zip</div>
+                <div class="check-item"><input type="checkbox" name="sw_winrar"> WinRAR</div>
+                <div class="check-item"><input type="checkbox" name="sw_pdf"> Adobe Reader</div>
+                <div class="check-item"><input type="checkbox" name="sw_sumatra"> Sumatra PDF</div>
+                <div class="check-item"><input type="checkbox" name="sw_nitro"> Nitro PDF</div>
+                <div class="check-item"><input type="checkbox" name="sw_java"> Java</div>
+                <div class="check-item"><input type="checkbox" name="sw_his"> HIS (Hospitalario)</div>
+                <div class="check-item"><input type="checkbox" name="sw_av"> Antivirus Corp.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Red y Seguridad -->
+    <h2>5. RED Y SEGURIDAD (AUDITORÍA)</h2>
+    <div class="section-grid cols-3">
+        <div class="field-box"><span class="field-label">Nombre de Equipo (Hostname):</span> <input type="text" name="hostname"></div>
+        <div class="field-box"><span class="field-label">Dirección IP:</span> <input type="text" name="ip"></div>
+        <div class="field-box"><span class="field-label">MAC Address (LAN):</span> <input type="text" name="mac_lan"></div>
+        <div class="field-box"><span class="field-label">MAC Address (WIFI):</span> <input type="text" name="mac_wifi"></div>
+        <div class="field-box"><span class="field-label">Puerta de Enlace:</span> <input type="text" name="gateway"></div>
+        <div class="field-box"><span class="field-label">DNS Principal:</span> <input type="text" name="dns"></div>
+        <div class="field-box full-width">
+            <span class="field-label">Chequeo de Seguridad:</span>
+            <div class="check-group">
+                <div class="check-item"><input type="checkbox" name="sec_dominio"> Unido al Dominio</div>
+                <div class="check-item"><input type="checkbox" name="sec_av_upd"> Antivirus Actualizado</div>
+                <div class="check-item"><input type="checkbox" name="sec_bitlocker"> Cifrado BitLocker</div>
+                <div class="check-item"><input type="checkbox" name="sec_usb"> Bloqueo USB</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firmas -->
+    <div class="signatures">
+        <div class="sig-box">
+            <input type="text" name="realizado_por" placeholder="Nombre de quien realiza..." style="width: 95%; text-align: center; border:none; border-bottom: 1px solid #333; margin-bottom: 5px; background: transparent;">
+            <strong>REALIZADO POR (SISTEMAS)</strong>
+        </div>
+        <div class="sig-box">
+            <input type="text" name="recibido_por" placeholder="Nombre de quien recibe..." style="width: 95%; text-align: center; border:none; border-bottom: 1px solid #333; margin-bottom: 5px; background: transparent;">
+            <strong>RECIBIDO A SATISFACCIÓN (USUARIO)</strong>
+        </div>
+    </div>
+
+    <div class="no-print" style="text-align: center;">
+        <button type="button" class="btn-save" onclick="enviarDatos()">GUARDAR EN DRIVE</button>
+        <button type="button" class="btn-save" style="background-color: #0056b3; margin-left: 10px;" onclick="window.print()">IMPRIMIR PDF</button>
+    </div>
+</div>
+</form>
+
+<script>
+    function enviarDatos() {
+       
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyW14CQbszEfrz2Eridze1VfYmiMXhsIguo3R5q4pN3be2FMzsOJ28X0qkL-Dg2SRl5rQ/exec';
+        
+        const form = document.forms['inventoryForm'];
+        const data = new FormData(form);
+        const object = {};
+        data.forEach((value, key) => object[key] = value);
+
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(object)
+        })
+        .then(response => {
+            alert("¡Datos guardados exitosamente en Google Sheets!");
+            console.log('Success!', response);
+        })
+        .catch(error => {
+            alert("Error al guardar. Revisa la consola.");
+            console.error('Error!', error.message);
+        });
+    }
+</script>
+
+</body>
+</html>
