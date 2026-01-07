@@ -60,7 +60,7 @@
         <div class="field-box"><span class="field-label">Memoria RAM (GB):</span> <input type="text" name="ram"></div>
         <div class="field-box full-width">
             <span class="field-label">Almacenamiento:</span>
-            Disco 1: <select name="disco1_tipo" style="width: 60px; height: auto;"><option>HDD</option><option>SSD</option></select> | Capacidad: <select name="disco1_cap" style="width: 80px; height: auto;"><option>128 GB</option><option>256 GB</option><option>500 GB</option><option>1 TB</option><option>2 TB</option></select>
+            Disco 1: <select name="disco1_tipo" style="width: 60px; height: auto;"><option>HDD</option><option>SSD</option><option>M2</option></select> | Capacidad: <select name="disco1_cap" style="width: 80px; height: auto;"><option>128 GB</option><option>250 GB</option><option>256 GB</option><option>500 GB</option><option>1 TB</option><option>2 TB</option></select>
         </div>
     </div>
 
@@ -80,7 +80,8 @@
             <tr><td>Monitor</td><td><input type="text" name="mon_marca"></td><td><input type="text" name="mon_modelo"></td><td><input type="text" name="mon_serial"></td><td><input type="text" name="mon_placa"></td></tr>
             <tr><td>Teclado</td><td><input type="text" name="tec_marca"></td><td><input type="text" name="tec_modelo"></td><td><input type="text" name="tec_serial"></td><td><input type="text" name="tec_placa"></td></tr>
             <tr><td>Mouse</td><td><input type="text" name="mou_marca"></td><td><input type="text" name="mou_modelo"></td><td><input type="text" name="mou_serial"></td><td><input type="text" name="mou_placa"></td></tr>
-            <tr><td>Impresora/Scanner</td><td><input type="text" name="imp_marca"></td><td><input type="text" name="imp_modelo"></td><td><input type="text" name="imp_serial"></td><td><input type="text" name="imp_placa"></td></tr>
+            <tr><td>Impresora</td><td><input type="text" name="imp_marca"></td><td><input type="text" name="imp_modelo"></td><td><input type="text" name="imp_serial"></td><td><input type="text" name="imp_placa"></td></tr>
+            <tr><td>Scanner<td><input type="text" name="scan_marca"></td><td><input type="text" name="scan_modelo"></td><td><input type="text" name="scan_serial"></td><td><input type="text" name="scan_placa"></td></tr>
             <tr><td>UPS/Regulador</td><td><input type="text" name="ups_marca"></td><td><input type="text" name="ups_modelo"></td><td><input type="text" name="ups_serial"></td><td><input type="text" name="ups_placa"></td></tr>
         </tbody>
     </table>
@@ -143,6 +144,7 @@
                 <div class="check-item"><input type="checkbox" name="sec_av_upd"> Antivirus Actualizado</div>
                 <div class="check-item"><input type="checkbox" name="sec_bitlocker"> Cifrado BitLocker</div>
                 <div class="check-item"><input type="checkbox" name="sec_usb"> Bloqueo USB</div>
+                <div class="check-item"><input type="checkbox" name="sec_cuenta_local"> Cuenta Local</div>
             </div>
         </div>
     </div>
@@ -160,7 +162,7 @@
     </div>
 
     <div class="no-print" style="text-align: center;">
-        <button type="button" class="btn-save" onclick="enviarDatos()">GUARDAR EN DRIVE</button>
+        <button type="button" id="btnGuardar" class="btn-save" onclick="enviarDatos()">GUARDAR EN DRIVE</button>
         <button type="button" class="btn-save" style="background-color: #0056b3; margin-left: 10px;" onclick="window.print()">IMPRIMIR PDF</button>
     </div>
 </div>
@@ -169,6 +171,11 @@
 <script>
     function enviarDatos() {
        
+        const btn = document.getElementById('btnGuardar');
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Enviando...";
+
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyW14CQbszEfrz2Eridze1VfYmiMXhsIguo3R5q4pN3be2FMzsOJ28X0qkL-Dg2SRl5rQ/exec';
         
         const form = document.forms['inventoryForm'];
@@ -186,10 +193,15 @@
         .then(response => {
             alert("¡Datos guardados exitosamente en Google Sheets!");
             console.log('Success!', response);
+            form.reset(); // Opcional: Limpiar formulario tras éxito
         })
         .catch(error => {
             alert("Error al guardar. Revisa la consola.");
             console.error('Error!', error.message);
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.textContent = originalText;
         });
     }
 </script>
