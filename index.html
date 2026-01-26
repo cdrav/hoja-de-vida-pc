@@ -13,7 +13,7 @@
     <table class="header-table">
         <tr>
             <td rowspan="4" style="width: 20%;">
-                <img src="Logo_HDSA.jpg" alt="Logo Hospital" style="max-width: 100%; max-height: 80px; height: auto;">
+                <img src="Logo_HDSA.jpg" alt="Logo Hospital" style="max-width: 100%; max-height: 70px; height: auto;">
             </td>
             <td rowspan="2" class="logo">HOSPITAL DEPARTAMENTAL SAN ANTONIO DE ROLDANILLO</td>
             <td><strong>CÓDIGO:</strong> GI-SI-FO-15</td>
@@ -26,18 +26,67 @@
             <td><strong>PÁGINA:</strong> 1 de 1</td>
         </tr>
         <tr>
-            <td><strong>FECHA:</strong> </td>
+            <td><strong>FECHA:</strong>22/01/2026 </td>
         </tr>
     </table>
+
+    <!-- Modal de Bienvenida y Manual -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeWelcomeModal">&times;</span>
+            <h3>¡Bienvenido!</h3>
+            <p>Este formulario te permite registrar la ficha técnica de equipos de cómputo. Por favor, lee el manual de usuario para entender cómo llenarlo correctamente.</p>
+
+            <div id="userManualContent" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
+                <h4>Manual de Usuario</h4>
+                <p><strong>1. Información del Usuario y Ubicación:</strong></p>
+                <ul>
+                    <li><strong>Nombre Responsable:</strong> Ingresa el nombre completo del usuario principal del equipo.</li>
+                    <li><strong>Cédula (CC):</strong> Número de identificación del responsable.</li>
+                    <li><strong>Cargo:</strong> Puesto de trabajo del responsable.</li>
+                    <li><strong>Usuario de Red / Correo:</strong> Nombre de usuario de dominio o dirección de correo electrónico institucional.</li>
+                    <li><strong>Ubicación:</strong> Departamento o área donde se encuentra el equipo.</li>
+                </ul>
+                <p><strong>2. Hardware y Especificaciones:</strong></p>
+                <ul>
+                    <li><strong>Tipo de Equipo:</strong> Selecciona el tipo de equipo (PC Escritorio, Portátil, etc.).</li>
+                    <li><strong>Marca, Modelo, Serial, Placa Inventario:</strong> Datos identificativos del equipo.</li>
+                    <li><strong>Procesador, Memoria RAM:</strong> Especificaciones técnicas principales.</li>
+                    <li><strong>Almacenamiento:</strong> Tipo y capacidad del disco principal.</li>
+                </ul>
+                <p><strong>3. Detalle de Periféricos:</strong></p>
+                <ul>
+                    <li>Para cada periférico (Monitor, Teclado, Mouse, Impresora, Scanner, UPS/Regulador), ingresa su Marca, Modelo, Serial y Placa/Activo si aplica.</li>
+                </ul>
+                <p><strong>4. Software y Licenciamiento:</strong></p>
+                <ul>
+                    <li><strong>Sistema Operativo:</strong> Selecciona el SO instalado y si la licencia es OEM o por Volumen.</li>
+                    <li><strong>Microsoft Office:</strong> Selecciona la versión de Office y su estado de activación.</li>
+                    <li><strong>Software Adicional:</strong> Marca los programas adicionales instalados.</li>
+                </ul>
+                <p><strong>5. Red y Seguridad (Auditoría):</strong></p>
+                <ul>
+                    <li><strong>Nombre de Equipo, IP, MAC Address (LAN/WIFI), Gateway, DNS:</strong> Configuración de red del equipo.</li>
+                    <li><strong>Chequeo de Seguridad:</strong> Marca las opciones de seguridad aplicadas.</li>
+                </ul>
+                <p><strong>Firmas:</strong></p>
+                <ul>
+                    <li><strong>REALIZADO POR (SISTEMAS):</strong> Nombre del técnico que realiza la ficha.</li>
+                    <li><strong>RECIBIDO A SATISFACCIÓN (USUARIO):</strong> Nombre del usuario que recibe el equipo o valida la información.</li>
+                </ul>
+                <p>Una vez completado, haz clic en "GUARDAR EN DRIVE" para enviar la información. Puedes usar "IMPRIMIR PDF" para generar una copia.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- 1. Usuario -->
     <h2>1. INFORMACIÓN DEL USUARIO Y UBICACIÓN</h2>
     <div class="section-grid cols-4">
-        <div class="field-box" style="grid-column: span 2;"><span class="field-label">Nombre Responsable:</span> <input type="text" name="responsable" required></div>
-        <div class="field-box"><span class="field-label">Cédula (CC):</span> <input type="text" name="cedula"></div>
-        <div class="field-box"><span class="field-label">Cargo:</span> <input type="text" name="cargo"></div>
-        <div class="field-box" style="grid-column: span 2;"><span class="field-label">Usuario de Red / Correo:</span> <input type="text" name="usuario_red"></div>
-        <div class="field-box" style="grid-column: span 2;"><span class="field-label">Ubicación:</span> <input type="text" name="ubicacion"></div>
+        <div class="field-box" style="grid-column: span 2;"><label class="field-label" for="responsable">Nombre Responsable:</label> <input type="text" id="responsable" name="responsable" required></div>
+        <div class="field-box"><label class="field-label" for="cedula">Cédula (CC):</label> <input type="text" id="cedula" name="cedula"></div>
+        <div class="field-box"><label class="field-label" for="cargo">Cargo:</label> <input type="text" id="cargo" name="cargo"></div>
+        <div class="field-box" style="grid-column: span 2;"><label class="field-label" for="usuario_red">Usuario de Red / Correo:</label> <input type="text" id="usuario_red" name="usuario_red"></div>
+        <div class="field-box" style="grid-column: span 2;"><label class="field-label" for="ubicacion">Ubicación:</label> <input type="text" id="ubicacion" name="ubicacion"></div>
     </div>
 
     <!-- 2. Hardware -->
@@ -162,15 +211,40 @@
     </div>
 
     <div class="no-print" style="text-align: center;">
-        <button type="button" id="btnGuardar" class="btn-save" onclick="enviarDatos()">GUARDAR EN DRIVE</button>
-        <button type="button" class="btn-save" style="background-color: #0056b3; margin-left: 10px;" onclick="window.print()">IMPRIMIR PDF</button>
+        <button type="button" id="btnGuardar" class="btn-save">GUARDAR EN DRIVE</button>
+        <button type="button" id="btnPrint" class="btn-save btn-print">IMPRIMIR PDF</button>
     </div>
 </div>
 </form>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Asignar eventos a los botones
+        document.getElementById('btnGuardar').addEventListener('click', enviarDatos);
+        document.getElementById('btnPrint').addEventListener('click', () => window.print()); 
+
+        // Funcionalidad del Modal
+        const welcomeModal = document.getElementById('welcomeModal');
+        const closeWelcomeModalBtn = document.getElementById('closeWelcomeModal');
+
+        // Mostrar el modal de bienvenida al cargar la página
+        welcomeModal.style.display = 'block';
+
+        // Cuando el usuario hace clic en <span> (x), cierra el modal
+        closeWelcomeModalBtn.addEventListener('click', () => {
+            welcomeModal.style.display = 'none';
+        });
+
+        // Cuando el usuario hace clic fuera del modal, lo cierra
+        window.addEventListener('click', (event) => {
+            if (event.target == welcomeModal) {
+                welcomeModal.style.display = 'none';
+            }
+        });
+    });
+
     function enviarDatos() {
-       
+
         const btn = document.getElementById('btnGuardar');
         const originalText = btn.textContent;
         btn.disabled = true;
@@ -178,8 +252,8 @@
 
         // PEGA AQUÍ LA URL COMPLETA QUE OBTUVISTE AL HACER "NUEVA IMPLEMENTACIÓN"
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwijT06gpsG4XSr2Bpq6VsVMDPtshahrBVS3tVlZ2v0Kk5CnShuBVhBrYnOMMpvCDTnnQ/exec';
-                           
-                           
+
+
         const form = document.forms['inventoryForm'];
         const data = new FormData(form);
         const object = {};
